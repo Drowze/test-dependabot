@@ -17,3 +17,4 @@ updates:
       # Separate sections of the branch name with a hyphen
       # for example, `dependabot-bundler-rubocop-performance-1.11.5`
       separator: "-"
+    versioning-strategy: "lockfile-only"
