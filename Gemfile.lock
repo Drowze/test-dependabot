@@ -81,7 +81,7 @@ PLATFORMS
 
 DEPENDENCIES
   pronto
-  pronto-rubocop (= 0.10.0)
+  pronto-rubocop (>= 0.10.0, < 0.11.0)
   rubocop
 
 BUNDLED WITH
