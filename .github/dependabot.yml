@@ -1,0 +1,19 @@
+# For updates options, check https://docs.github.com/en/code-security/supply-chain-security/keeping-your-dependencies-updated-automatically/configuration-options-for-dependency-updates#configuration-options-for-updates
+# Validate the file at https://dependabot.com/docs/config-file/validator/
+
+version: 2
+
+updates:
+  - package-ecosystem: "bundler"
+    # The default value is 5, which means limit of 5 PR <schedule.interval>. Setting to 0 disables the updates.
+    # open-pull-requests-limit: 0
+    directory: "/"
+    schedule:
+      # By default, this is on Monday
+      interval: "daily"
+    commit-message:
+      prefix: "[Dependabot]"
+    pull-request-branch-name:
+      # Separate sections of the branch name with a hyphen
+      # for example, `dependabot-bundler-rubocop-performance-1.11.5`
+      separator: "-"
