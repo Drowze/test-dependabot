@@ -1,20 +1,42 @@
-# For updates options, check https://docs.github.com/en/code-security/supply-chain-security/keeping-your-dependencies-updated-automatically/configuration-options-for-dependency-updates#configuration-options-for-updates
-# Validate the file at https://dependabot.com/docs/config-file/validator/
-
 version: 2
-
 updates:
   - package-ecosystem: "bundler"
-    # The default value is 5, which means limit of 5 PR <schedule.interval>. Setting to 0 disables the updates.
-    # open-pull-requests-limit: 0
     directory: "/"
+    insecure-external-code-execution: allow
     schedule:
       # By default, this is on Monday
-      interval: "daily"
+      interval: "weekly"
     commit-message:
       prefix: "[Dependabot]"
     pull-request-branch-name:
-      # Separate sections of the branch name with a hyphen
-      # for example, `dependabot-bundler-rubocop-performance-1.11.5`
       separator: "-"
-    versioning-strategy: "lockfile-only"
+    labels:
+      - dependencies
+      - ruby
+    groups:
+      karafka:
+        patterns:
+          - "karafka*"
+          - "waterdrop"
+      dev-dependencies:
+        dependency-type: "development"
+      prod-dependencies:
+        dependency-type: "production"
+
+    ignore:
+      # Our own gems
+      - dependency-name: "gem_c"
+      # Locked dependencies
+      - dependency-name: "foundation-rails"
+      # Locked dependencies (patch version upgrade allowed)
+      - dependency-name: "psych"
+        update-types: ["version-update:semver-minor"]
+      - dependency-name: "graphql"
+        update-types: ["version-update:semver-minor"]
+      - dependency-name: "rails"
+        update-types: ["version-update:semver-minor"]
+      - dependency-name: "wicked_pdf"
+        update-types: ["version-update:semver-minor"]
+      # Allow only minor and patch version updates
+      - dependency-name: "*"
+        update-types: ["version-update:semver-major"]
