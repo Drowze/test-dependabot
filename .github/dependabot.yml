@@ -20,6 +20,10 @@ updates:
           - "waterdrop"
       dev-dependencies:
         dependency-type: "development"
+        # Bug workaround. exclude-patterns shouldn't be necessary here
+        # See https://github.com/dependabot/dependabot-core/issues/8961
+        exclude-patterns:
+          - "karafka-testing"
       prod-dependencies:
         dependency-type: "production"
 
