@@ -6,8 +6,6 @@ updates:
     schedule:
       # By default, this is on Monday
       interval: "weekly"
-    commit-message:
-      prefix: "[Dependabot]"
     pull-request-branch-name:
       separator: "-"
     labels:
@@ -29,7 +27,7 @@ updates:
 
     ignore:
       # Our own gems
-      - dependency-name: "gem_c"
+      # - dependency-name: "gem_c"
       # Locked dependencies
       - dependency-name: "foundation-rails"
       # Locked dependencies (patch version upgrade allowed)
